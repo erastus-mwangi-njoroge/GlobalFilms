@@ -16,7 +16,7 @@ const App = () =>{
         console.log(data.Search);
     }
     useEffect(()=>{
-        searchFilms('Batman');
+        searchFilms('Forever');
         const enterKeyFinder = event => {
             if (event.key === 'Enter') {
               event.preventDefault();
