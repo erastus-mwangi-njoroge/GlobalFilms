@@ -17,7 +17,18 @@ const App = () =>{
     }
     useEffect(()=>{
         searchFilms('Batman');
-    },[]);
+        const enterKeyFinder = event => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              searchFilms(event.target.value)
+          }
+      };
+      document.addEventListener('keydown', enterKeyFinder);
+
+    return () => {
+      document.removeEventListener('keydown', enterKeyFinder);
+    };
+  }, []);
     return(
         <div className="app">
             <h1>GlobalFilmShow</h1>
@@ -32,6 +43,7 @@ const App = () =>{
                 src={SearchIcon} 
                 alt="searchIcon" 
                 onClick={() =>searchFilms(searchTerm)}
+                
                 />  
             </div>  
             {Films?.length >= 0 ? (            
